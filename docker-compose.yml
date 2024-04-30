@@ -1,27 +1,23 @@
-version: '3.8'
-
 networks:
   vue:
 
 services:
   vue-ui:
     build:
-      context: ./vue-app
+      context: ./frontend
     ports:
-      - "8080:8080"
+      - "8085:8080"
     stdin_open: true
     volumes:
-      - './vue-app:/app'
+      - './frontend:/app'
     networks:
-      - vue
-    depends_on:
-      - npm
-
+      - laravel-vue
+    entrypoint: [ "sh", "-c" ]
+    command: [ "npm install && npm run serve" ]
+  
   npm:
     image: node:current-alpine 
     volumes:
       - ./vue-app:/app
     working_dir: /app
     entrypoint: [ 'npm' ]
-    command: [ 'install' ]
-
