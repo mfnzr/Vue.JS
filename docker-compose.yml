@@ -11,7 +11,7 @@ services:
     volumes:
       - './frontend:/app'
     networks:
-      - laravel-vue
+      - vue
     entrypoint: [ "sh", "-c" ]
     command: [ "npm install && npm run serve" ]
   
