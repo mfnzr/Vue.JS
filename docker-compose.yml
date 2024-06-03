@@ -4,12 +4,12 @@ networks:
 services:
   vue-ui:
     build:
-      context: ./frontend
+      context: ./vue-app
     ports:
       - "8085:8080"
     stdin_open: true
     volumes:
-      - './frontend:/app'
+      - './vue-app:/app'
     networks:
       - vue
     entrypoint: [ "sh", "-c" ]
