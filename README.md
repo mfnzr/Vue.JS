@@ -13,3 +13,8 @@ Extensões para o vs-code:
 
 [def]: https://marketplace.visualstudio.com/items?itemName=MisterJ.vue-volar-extention-pack
 
+Para rodar o projeto SEM DOCKER, na pasta vue-app execute:
+`npm run dev`
+
+Lembrar de executar antes:
+`npm install`

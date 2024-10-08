@@ -6,14 +6,14 @@ services:
     build:
       context: ./vue-app
     ports:
-      - "8085:8080"
+      - "8085:5173"
     stdin_open: true
     volumes:
       - './vue-app:/app'
     networks:
       - vue
     entrypoint: [ "sh", "-c" ]
-    command: [ "npm install && npm run serve" ]
+    command: [ "npm install && npm run dev" ]
   
   npm:
     image: node:current-alpine 

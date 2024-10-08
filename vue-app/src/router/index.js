@@ -1,28 +1,31 @@
-import { createRouter, createWebHistory } from "vue-router";
-
-const routes = [
-  {
-    path: "/",
-    name: "Home", //Nome da rota
-    component: () => import("@/views/HomeView.vue"),
-    meta: { title: "Home" }, // Define o título da aba para esta rota
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: () => import("@/views/AboutView.vue"),
-    meta: { title: "About" },
-  },
-];
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+      meta: {
+        title: 'Home'
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/AboutView.vue'),
+      meta: {
+        title: 'About'
+      }
+    }
+  ]
+})
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || "Vue"; // Define o título da aba com base na meta.title
+  document.title = to.meta.title;
   next();
 });
 
-export default router;
+export default router
